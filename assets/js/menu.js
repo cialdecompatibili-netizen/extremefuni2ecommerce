@@ -14,6 +14,25 @@
     var toggle = document.querySelector('[data-nv-toggle]');
     var panel = toggle ? document.getElementById(toggle.getAttribute('data-nv-toggle')) : null;
     var ddToggles = Array.prototype.slice.call(document.querySelectorAll('[data-nv-dropdown-toggle]'));
+    // 4) Carrello (solo con e-commerce acceso): su mobile sta nella barra in alto, a sinistra delle 3 lineette,
+    //    invece che nascosto dentro il pannello. E' lo stesso elemento (id e eventi restano): lo si sposta e basta.
+    //    Da 768px in su torna nella sua voce di menu.
+    var cartw = document.querySelector('.nz-cartw');
+    if (cartw && toggle && window.matchMedia) {
+      var cartLi = cartw.closest('.nz-li');
+      var mq = window.matchMedia('(max-width: 767.98px)');
+      var placeCart = function () {
+        if (mq.matches) {
+          if (cartw.parentNode !== toggle.parentNode) toggle.parentNode.insertBefore(cartw, toggle);
+          if (cartLi) cartLi.style.display = 'none';
+        } else {
+          if (cartLi && cartw.parentNode !== cartLi) cartLi.appendChild(cartw);
+          if (cartLi) cartLi.style.display = '';
+        }
+      };
+      placeCart();
+      if (mq.addEventListener) mq.addEventListener('change', placeCart); else mq.addListener(placeCart);
+    }
 
     // chiude tutte le tendine (tranne "except", se data)
     function closeDropdowns(except) {

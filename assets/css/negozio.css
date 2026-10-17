@@ -37,6 +37,11 @@
 .nz-cart:hover, .nz-cart:focus-visible { color: var(--nz-tema); text-decoration: none; }
 .nz-cart svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .nz-cart .nz-n { font-size: .9rem; font-variant-numeric: tabular-nums; }
+/* Mobile: il carrello e' spostato da menu.js nella barra, a sinistra delle 3 lineette (stesso elemento .nz-cartw, non un duplicato). */
+@media (max-width: 767.98px) {
+  .nv__inner > .nz-cartw { margin-left: auto; }
+  .nv__inner > .nz-cartw + .nv__toggle { margin-left: 0; }
+}
 .nz-cart.nz-pieno { color: var(--nz-tema); }
 .nz-cart.nz-bump svg { animation: nz-bump .45s ease; }
 @keyframes nz-bump { 30% { transform: scale(1.35); } 60% { transform: scale(.92); } }
