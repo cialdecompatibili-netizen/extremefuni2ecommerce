@@ -27,12 +27,12 @@
     "id": "pricing",
     "nome": "Preventivo",
     "enabled": true,
-    "html": "<section class=\"ex-band\" id=\"pricing\" aria-labelledby=\"pricing-title\"><div class=\"ex-band-in\"><div><h2 class=\"ex-h2\" id=\"pricing-title\">Preventivo gratuito, sopralluogo incluso</h2><p>Un solo modulo, rispondiamo entro 24 ore, festivi esclusi.</p></div><a class=\"ex-btn ex-btn-k\" href=\"/contatti/\" onclick=\"trackClick('edilextreme','preventivo','Preventivo',0)\">Richiedi preventivo</a></div></section>"
+    "html": "<section class=\"ex-band\" id=\"pricing\" aria-labelledby=\"pricing-title\"><div class=\"ex-band-in\"><div><h2 class=\"ex-h2\" id=\"pricing-title\">Preventivo gratuito, sopralluogo incluso</h2><p>Un solo modulo, rispondiamo entro 24 ore, festivi esclusi.</p></div><a class=\"ex-btn ex-btn-k\" href=\"__BASEURL__/contatti/\" onclick=\"trackClick('edilextreme','preventivo','Preventivo',0)\">Richiedi preventivo</a></div></section>"
   },
   {
     "id": "cta",
     "nome": "CTA finale",
     "enabled": false,
-    "html": "<section class=\"ex-end\" aria-labelledby=\"cta-title\"><div class=\"ex-band-in\"><div><h2 class=\"ex-h2\" id=\"cta-title\">Pronto a iniziare?</h2><p>Compila il modulo: rispondiamo entro 24 ore, festivi esclusi.</p></div><a class=\"ex-btn ex-btn-y\" href=\"/contatti/\">Richiedi preventivo</a></div></section>"
+    "html": "<section class=\"ex-end\" aria-labelledby=\"cta-title\"><div class=\"ex-band-in\"><div><h2 class=\"ex-h2\" id=\"cta-title\">Pronto a iniziare?</h2><p>Compila il modulo: rispondiamo entro 24 ore, festivi esclusi.</p></div><a class=\"ex-btn ex-btn-y\" href=\"__BASEURL__/contatti/\">Richiedi preventivo</a></div></section>"
   }
 ]

@@ -16,7 +16,7 @@ author:
   links:
     - label: "Richiedi un preventivo"
       icon: "fas fa-fw fa-envelope"
-      url: "/contatti/"
+      url: "/extremefuni2ecommerce/contatti/"
 
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes
