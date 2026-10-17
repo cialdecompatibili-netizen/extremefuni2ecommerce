@@ -1,4 +1,4 @@
-﻿related_posts: 3
+related_posts: 3
 title: EdilExtreme
 baseurl: "/extremefuni2ecommerce"
 url: "https://cialdecompatibili-netizen.github.io"
@@ -29,6 +29,9 @@ permalink: /:categories/:title/
 timezone:
 
 collections:
+  negozio:
+    output: true
+    permalink: /negozio/:name/
   products:
     output: true
     permalink: /shop/:name/
@@ -99,4 +102,11 @@ tag_archive:
   type: liquid
   path: /tags/
 
-cms_homepage: 
+cms_homepage:
+
+# E-commerce (porting da ecommercealfolio1). Interruttore: admin > Impostazioni > Abilita e-commerce. Solo true accende, chiave assente = spento.
+# Spento = spariscono menu, carrello e script; pagine /negozio/ /carrello/ /ordine/ e schede mostrano 'non disponibile'. Prodotti e categorie restano salvati.
+ecommerce: true
+# Ordini (SMOKE TEST, nessun pagamento): il browser scrive una riga nel foglio Google chiamando questo Apps Script. Vuoto = il pulsante 'Invia richiesta d'ordine' resta spento.
+ordini:
+  tracker: ""

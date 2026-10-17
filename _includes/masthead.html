@@ -79,6 +79,7 @@
       <div class="nv__panel" id="nv-panel">
         <ul class="nv__list">
           {%- for item in nv_items -%}
+            {%- if item.url == '/negozio/' and site.ecommerce != true -%}{%- continue -%}{%- endif -%}
             {%- assign u = item.url | default: '#' -%}
 
             {%- comment -%} 1) costruisco le voci della tendina (se ce ne sono) {%- endcomment -%}
@@ -105,6 +106,12 @@
                 {%- for f in site.data.shop_nav.featured -%}
                   {%- if f.title and f.url -%}<a class="nv__dd-item" href="{{ f.url | relative_url }}">{{ f.title }}</a>{%- endif -%}
                 {%- endfor -%}
+              {%- elsif item.title == 'Negozio' and site.ecommerce == true -%}
+                <a class="nv__dd-item" href="{{ '/negozio/' | relative_url }}">Tutto il negozio</a>
+                {%- for c in site.data.catalogo.categorie -%}
+                  {%- assign nz_n = site.data.catalogo.prodotti | where: 'categoria', c.id | where_exp: 'x', 'x.visibile != false' | size -%}
+                  {%- if nz_n > 0 -%}<a class="nv__dd-item" href="{{ '/negozio/categoria/' | append: c.id | append: '/' | relative_url }}">{{ c.icona }} {{ c.nome }}</a>{%- endif -%}
+                {%- endfor -%}
               {%- endif -%}
             {%- endcapture -%}
 
@@ -127,6 +134,24 @@
             Strumenti a destra: ricerca del tema (+ carrello inserito da head/custom.html).
             Togli questo <li> per eliminare la lente. Il carrello sparisce con lei (si appoggia qui).
           {%- endcomment -%}
+          {%- if site.ecommerce == true -%}
+            {%- comment -%}
+              CARRELLO (E-commerce, da ecommercealfolio1). Compare solo con ecommerce: true (admin > Impostazioni > Abilita e-commerce).
+              data-catalogo = JSON dei prodotti visibili di _data/catalogo.json (id, p=centesimi, n=nome, t=tipo, u=link scheda, i=immagine, e=icona): serve al conteggio, al totale
+              e all'anteprima in tutte le pagine senza caricare il catalogo. Sempre passato da | escape (e' dentro un attributo) e i nomi da | jsonify.
+              Il numero lo scrive assets/js/carrello.js (localStorage). CSS e JS sono caricati da _includes/head/custom.html, una volta sola.
+            {%- endcomment -%}
+            {%- capture nz_cat -%}{%- for b in site.data.catalogo.prodotti -%}{%- unless b.visibile == false -%}{"id":{{ b.id | jsonify }},"p":{{ b.prezzo_centesimi | default: 0 | jsonify }},"n":{{ b.nome | jsonify }},"t":{{ b.tipo | default: 'fisico' | jsonify }},"u":{{ '/negozio/' | append: b.id | append: '/' | relative_url | jsonify }},"i":{% if b.immagine and b.immagine != '' %}{% if b.immagine contains '://' %}{{ b.immagine | jsonify }}{% else %}{{ '/' | append: b.immagine | relative_url | jsonify }}{% endif %}{% else %}""{% endif %},"e":{{ b.icona | default: '' | jsonify }}},{%- endunless -%}{%- endfor -%}{%- endcapture -%}
+            <li class="nv__item nv__tools nz-li">
+              <div class="nz-cartw">
+                <a id="nz-cart" class="nz-cart" href="{{ '/carrello/' | relative_url }}" data-catalogo="{{ nz_cat | escape }}" aria-label="Carrello">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3.5h2.6l2.3 11.2a1.6 1.6 0 0 0 1.6 1.3h8.5a1.6 1.6 0 0 0 1.6-1.2l1.5-6.8H6"/></svg>
+                  <span class="nz-n">(0)</span>
+                </a>
+                <div class="nz-prev" id="nz-prev"></div>
+              </div>
+            </li>
+          {%- endif -%}
           {%- if site.search == true -%}
             <li class="nv__item nv__tools">
               <button class="search__toggle" type="button" aria-label="Cerca nel sito">

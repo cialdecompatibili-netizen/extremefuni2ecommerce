@@ -16,3 +16,12 @@ Sito Jekyll su GitHub Pages: https://extremefuni.it/
 - I blocchi pricing e cta dicono quasi la stessa cosa uno dopo l'altro.
 
 - Menu: voci principali in _data/navigation.yml, tendine in _data/sottomenu.yml (chiave = title della voce). L'admin > Menu gestisce entrambi (bottone Sottomenu su ogni riga, un solo livello, separatori, riordino); salvando riscrive i due file e conserva il commento in testa a sottomenu.yml.
+
+## E-commerce (porting da ecommercealfolio1)
+- Interruttore: `ecommerce: true|false` in `_config.yml` (admin > Impostazioni > Abilita e-commerce). Solo true accende. Spento: spariscono voce Negozio nel menu, carrello, CSS/JS; /negozio/ /carrello/ /ordine/ e le schede mostrano "non disponibile". Prodotti e categorie restano salvati.
+- Fonte unica: `_data/catalogo.json` (categorie + prodotti, prezzo_centesimi = euro x 100, tipo fisico|digitale, visibile false = nascosto). Lo legge /negozio/, il carrello nel menu (`_includes/masthead.html`), le schede e l'admin (gruppo E-commerce, `admin/js/ecommerce.js`).
+- File: pagine `_pages/negozio.md carrello.md ordine.md grazie.md`, `assets/js/carrello.js`, `assets/css/negozio.css` (caricati da `_includes/head/custom.html` solo se acceso), layout `_layouts/negozio-prodotto.html` e `negozio-categoria.html`, include `negozio-riga.html`.
+- DIFFERENZA dal sito originale: qui il build di GitHub Pages e' quello classico, quindi il plugin Ruby `_plugins/ecommerce.rb` NON gira. Le schede `/negozio/<id>/` e `/negozio/categoria/<id>/` sono piccoli file in `_negozio/` (solo front matter con `pid`/`cid`) che l'admin crea e toglie da solo; i testi vengono sempre dal catalogo. Se il catalogo e' modificato a mano: admin > Prodotti negozio > "Rigenera pagine".
+- Ordini (smoke test, nessun pagamento): `ordini.tracker` in `_config.yml` = URL di un Apps Script Google. Vuoto = il pulsante "Invia richiesta d'ordine" resta spento. Per pagamenti veri vedi `_ecommerce` in box-ecommerce (Stripe + D1).
+- Il vecchio shop (`_pages/shop*.md`, collezione `products`, admin Prodotti/Categorie Shop) resta com'era e non e' collegato al menu; con l'e-commerce acceso l'icona carrello del vecchio shop sparisce.
+- Immagini prodotto: `assets/img/negozio/` (caricate dall'admin) o URL.
