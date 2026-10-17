@@ -20,6 +20,8 @@ Sito Jekyll su GitHub Pages: https://extremefuni.it/
 
 - L'indice automatico (JS 'INDICE AUTOMATICO' in `_includes/head/custom.html`) scatta su qualunque `.page__content` con almeno 3 H2: sulle pagine del negozio va escluso (ora lo e' per `.nz-*` e per i percorsi negozio/carrello/ordine/grazie), altrimenti compare sull'ordine. Verifica: `chrome --headless=new --dump-dom URL` e cercare `article-auto-toc`.
 
+- Angoli del negozio: in `assets/css/negozio.css` i raggi passano da due variabili in cima (`--nz-r: 6px` per pulsanti, quantita', chip e campi; `--nz-rl: 10px` per riquadri, foto e finestre). Per cambiare lo stile di tutto il negozio basta toccare quelle due righe; niente valori scritti a mano (le pillole 999px davano un effetto misto con gli angoli quadrati del tema). Verifica con screenshot headless di /negozio/ e di una scheda prodotto.
+
 ## E-commerce (porting da ecommercealfolio1)
 - Interruttore: `ecommerce: true|false` in `_config.yml` (admin > Impostazioni > Abilita e-commerce). Solo true accende. Spento: spariscono voce Negozio nel menu, carrello, CSS/JS; /negozio/ /carrello/ /ordine/ e le schede mostrano "non disponibile". Prodotti e categorie restano salvati.
 - Fonte unica: `_data/catalogo.json` (categorie + prodotti, prezzo_centesimi = euro x 100, tipo fisico|digitale, visibile false = nascosto). Lo legge /negozio/, il carrello nel menu (`_includes/masthead.html`), le schede e l'admin (gruppo E-commerce, `admin/js/ecommerce.js`).
