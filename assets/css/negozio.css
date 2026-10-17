@@ -1,13 +1,13 @@
 /* Negozio (E-commerce): elenco prodotti a righe, filtro categorie, carrello. Colori dal tema (variabili del sito, con ripiego).
    PUNTO CRITICO: e' un file statico caricato con <link> da _pages/negozio.md e dalle pagine prodotto (_plugins/ecommerce.rb). */
-:root, #negozio { --nz-bordo: #dee2e6; --nz-sfondo: var(--global-card-bg-color, #fff); --nz-testo: var(--t-text, #212529); --nz-tema: var(--t-accent-dark, #3f6b00); --nz-muto: var(--global-text-color-light, #6c757d); }
+:root, #negozio { --nz-r: 6px; --nz-rl: 10px; --nz-bordo: #dee2e6; --nz-sfondo: var(--global-card-bg-color, #fff); --nz-testo: var(--t-text, #212529); --nz-tema: var(--t-accent-dark, #3f6b00); --nz-muto: var(--global-text-color-light, #6c757d); }
 #negozio .nz-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
-#negozio .nz-pill { border: 1px solid var(--nz-bordo); background: transparent; color: var(--nz-testo); border-radius: 999px; padding: .25rem .8rem; cursor: pointer; font-size: .9rem; }
+#negozio .nz-pill { border: 1px solid var(--nz-bordo); background: transparent; color: var(--nz-testo); border-radius: var(--nz-r); padding: .25rem .8rem; cursor: pointer; font-size: .9rem; }
 #negozio .nz-pill.on { background: var(--nz-tema); border-color: var(--nz-tema); color: #fff; }
 #negozio .nz-lista { display: flex; flex-direction: column; gap: .75rem; margin-bottom: 2rem; }
-#negozio .nz-riga { display: flex; gap: 1rem; align-items: center; padding: .9rem 1rem; border: 1px solid var(--nz-bordo); border-radius: 12px; background: var(--nz-sfondo); }
+#negozio .nz-riga { display: flex; gap: 1rem; align-items: center; padding: .9rem 1rem; border: 1px solid var(--nz-bordo); border-radius: var(--nz-rl); background: var(--nz-sfondo); }
 #negozio .nz-riga[hidden] { display: none; }
-#negozio .nz-icona { flex: 0 0 3.2rem; height: 3.2rem; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border-radius: 12px; border: 1px solid var(--nz-bordo); }
+#negozio .nz-icona { flex: 0 0 3.2rem; height: 3.2rem; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border-radius: var(--nz-rl); border: 1px solid var(--nz-bordo); }
 #negozio .nz-testo { flex: 1 1 auto; min-width: 0; }
 #negozio .nz-testo h3 { margin: 0 0 .15rem; font-size: 1.1rem; }
 #negozio .nz-testo h3 a { color: var(--nz-testo); text-decoration: none; }
@@ -44,14 +44,14 @@
 
 /* Finestra "prodotto aggiunto" (creata da carrello.js > apri()). Sta FUORI da #negozio: per questo usa classi globali nz-dlg*, nz-db* e le variabili
    --nz-* definite su :root. Bottoni nz-db-*: stessa forma di quelli del carrello (pillola con contorno, si riempie al passaggio); verde = azione principale. */
-.nz-dialog { border: 1px solid var(--nz-bordo); border-radius: 14px; padding: 0; background: var(--nz-sfondo); color: var(--nz-testo); width: min(30rem, calc(100% - 2rem)); box-shadow: 0 12px 40px rgba(0, 0, 0, .25); }
+.nz-dialog { border: 1px solid var(--nz-bordo); border-radius: var(--nz-rl); padding: 0; background: var(--nz-sfondo); color: var(--nz-testo); width: min(30rem, calc(100% - 2rem)); box-shadow: 0 12px 40px rgba(0, 0, 0, .25); }
 .nz-dialog::backdrop { background: rgba(0, 0, 0, .45); }
 .nz-dlg { position: relative; padding: 1.25rem 1.25rem 1rem; }
 .nz-dlg h2 { margin: 0 2rem .9rem 0; font-size: 1.15rem; color: var(--nz-tema); }
 .nz-x { position: absolute; top: .45rem; right: .6rem; border: 0; background: transparent; font-size: 1.7rem; line-height: 1; color: var(--nz-muto); cursor: pointer; }
 .nz-x:hover { color: var(--nz-testo); }
 .nz-dlg-prod { display: flex; flex-direction: row; align-items: center; gap: .9rem; padding-bottom: .9rem; margin-bottom: .9rem; border-bottom: 1px solid var(--nz-bordo); }
-.nz-dlg-i { flex: 0 0 4rem; width: 4rem; height: 4rem; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid var(--nz-bordo); border-radius: 12px; font-size: 1.9rem; background: color-mix(in srgb, var(--nz-tema) 6%, var(--nz-sfondo)); }
+.nz-dlg-i { flex: 0 0 4rem; width: 4rem; height: 4rem; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid var(--nz-bordo); border-radius: var(--nz-rl); font-size: 1.9rem; background: color-mix(in srgb, var(--nz-tema) 6%, var(--nz-sfondo)); }
 .nz-dlg-i img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .nz-dlg-t { display: flex; flex-direction: column; gap: .15rem; min-width: 0; }
 .nz-dlg-t strong { overflow-wrap: anywhere; }
@@ -60,7 +60,7 @@
 .nz-dlg .nz-totale { font-size: 1.25rem; font-weight: 700; }
 .nz-dlg-az { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: flex-end; margin-top: 1.25rem; }
 /* Bottoni della finestra (come quelli del carrello): Continua lo shopping arancio con contorno, Vai al carrello verde pieno (azione principale) */
-.nz-db { --c: var(--nz-tema); display: inline-flex; align-items: center; justify-content: center; height: 3rem; padding: 0 1.5rem; margin: 0; font-size: 1rem; font-weight: 500; letter-spacing: .01em; text-decoration: none; color: var(--c); background: transparent; border: 2px solid var(--c); border-radius: 999px; box-shadow: none; cursor: pointer; transition: background-color .15s, color .15s, box-shadow .15s; }
+.nz-db { --c: var(--nz-tema); display: inline-flex; align-items: center; justify-content: center; height: 3rem; padding: 0 1.5rem; margin: 0; font-size: 1rem; font-weight: 500; letter-spacing: .01em; text-decoration: none; color: var(--c); background: transparent; border: 2px solid var(--c); border-radius: var(--nz-r); box-shadow: none; cursor: pointer; transition: background-color .15s, color .15s, box-shadow .15s; }
 .nz-db:hover, .nz-db:focus-visible { background: var(--c); color: #fff; text-decoration: none; }
 .nz-db:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 30%, transparent); }
 .nz-db:active { transform: translateY(1px); }
@@ -76,7 +76,7 @@
    La posizione base (left/right) dipende da dove sta l'icona nel menu: vedi il blocco MOBILE/DESKTOP in alto. */
 /* Anteprima al passaggio del mouse (.nz-prev, come .blockcart .body di PrestaShop). Solo con mouse (hover:hover) e da 576px; su touch il tap va alla pagina carrello.
    Vuota (carrello a zero) = nessun contenuto, quindi non compare nemmeno il riquadro. */
-.nz-prev { display: none; position: absolute; top: 100%; left: 0; z-index: 1050; min-width: 17rem; max-width: 90vw; padding: .8rem 1rem; border: 1px solid var(--nz-bordo); border-radius: 12px; background: var(--nz-sfondo); color: var(--nz-testo); box-shadow: 0 8px 28px rgba(0, 0, 0, .2); }
+.nz-prev { display: none; position: absolute; top: 100%; left: 0; z-index: 1050; min-width: 17rem; max-width: 90vw; padding: .8rem 1rem; border: 1px solid var(--nz-bordo); border-radius: var(--nz-rl); background: var(--nz-sfondo); color: var(--nz-testo); box-shadow: 0 8px 28px rgba(0, 0, 0, .2); }
 .nz-prev ul { list-style: none; margin: 0 0 .6rem; padding: 0; }
 .nz-prev li { display: flex; justify-content: space-between; gap: 1rem; padding: .2rem 0; font-size: .9rem; }
 .nz-prev-tot { display: flex; justify-content: space-between; margin: 0 0 .7rem; padding-top: .5rem; border-top: 1px solid var(--nz-bordo); }
@@ -108,20 +108,20 @@
   .nz-pp-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 3rem; }
   .nz-pp-media { position: sticky; top: 5rem; }
 }
-.nz-pp-foto { aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; border: 1px solid var(--nz-bordo); background: color-mix(in srgb, var(--nz-tema) 6%, var(--nz-sfondo)); display: flex; align-items: center; justify-content: center; }
+.nz-pp-foto { aspect-ratio: 1 / 1; border-radius: var(--nz-rl); overflow: hidden; border: 1px solid var(--nz-bordo); background: color-mix(in srgb, var(--nz-tema) 6%, var(--nz-sfondo)); display: flex; align-items: center; justify-content: center; }
 .nz-pp-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .nz-pp-ph { font-size: clamp(5rem, 18vw, 9rem); }
-.nz-pp-badge { display: inline-block; font-size: .8rem; padding: .2rem .7rem; border: 1px solid var(--nz-bordo); border-radius: 999px; color: var(--nz-muto); margin: 0 0 .75rem; }
+.nz-pp-badge { display: inline-block; font-size: .8rem; padding: .2rem .7rem; border: 1px solid var(--nz-bordo); border-radius: var(--nz-r); color: var(--nz-muto); margin: 0 0 .75rem; }
 .nz-pp-prezzo { font-size: 2rem; line-height: 1.1; margin: 0 0 1rem; }
 .nz-pp-breve { font-size: 1.05rem; margin-bottom: 1.5rem; }
 /* Acquisto: quantita' e bottone sulla stessa riga, stessa altezza, entrambi "pillola" leggeri. Bottone con solo contorno (si riempie al passaggio del mouse). */
 #negozio .nz-pp-acq { --nz-h: 3rem; display: flex; gap: .75rem; align-items: flex-end; flex-wrap: wrap; margin-bottom: 1.25rem; }
 #negozio .nz-pp-acq label { display: flex; flex-direction: column; gap: .3rem; margin: 0; font-size: .75rem; letter-spacing: .02em; color: var(--nz-muto); }
-#negozio .nz-pp-acq .nz-qta { width: 5rem; height: var(--nz-h); padding: 0 .5rem; text-align: center; font-size: 1.05rem; color: var(--nz-testo); background: transparent; border: 1.5px solid var(--nz-bordo); border-radius: 999px; box-shadow: none; -moz-appearance: textfield; appearance: textfield; transition: border-color .15s, box-shadow .15s; }
+#negozio .nz-pp-acq .nz-qta { width: 5rem; height: var(--nz-h); padding: 0 .5rem; text-align: center; font-size: 1.05rem; color: var(--nz-testo); background: transparent; border: 1.5px solid var(--nz-bordo); border-radius: var(--nz-r); box-shadow: none; -moz-appearance: textfield; appearance: textfield; transition: border-color .15s, box-shadow .15s; }
 #negozio .nz-pp-acq .nz-qta::-webkit-outer-spin-button, #negozio .nz-pp-acq .nz-qta::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 #negozio .nz-pp-acq .nz-qta:hover { border-color: var(--nz-tema); }
 #negozio .nz-pp-acq .nz-qta:focus { outline: none; border-color: var(--nz-tema); box-shadow: 0 0 0 3px color-mix(in srgb, var(--nz-tema) 20%, transparent); }
-#negozio .nz-pp-acq .nz-add { flex: 1 1 12rem; height: var(--nz-h); padding: 0 1.5rem; font-size: 1rem; font-weight: 500; letter-spacing: .01em; color: var(--nz-tema); background: transparent; border: 1.5px solid var(--nz-tema); border-radius: 999px; box-shadow: none; transition: background-color .15s, color .15s, box-shadow .15s; }
+#negozio .nz-pp-acq .nz-add { flex: 1 1 12rem; height: var(--nz-h); padding: 0 1.5rem; font-size: 1rem; font-weight: 500; letter-spacing: .01em; color: var(--nz-tema); background: transparent; border: 1.5px solid var(--nz-tema); border-radius: var(--nz-r); box-shadow: none; transition: background-color .15s, color .15s, box-shadow .15s; }
 #negozio .nz-pp-acq .nz-add:hover { background: var(--nz-tema); color: #fff; }
 #negozio .nz-pp-acq .nz-add:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--nz-tema) 25%, transparent); }
 #negozio .nz-pp-acq .nz-add:active { transform: translateY(1px); }
@@ -138,7 +138,7 @@
 #negozio .nz-cat a { color: inherit; text-decoration: none; border-bottom: 1px dotted currentColor; }
 #negozio .nz-cat a:hover { color: var(--nz-tema); }
 .nz-brd a:hover { color: var(--nz-tema); }
-#negozio .nz-cpill { display: inline-block; border: 1px solid var(--nz-bordo); color: var(--nz-testo); border-radius: 999px; padding: .25rem .8rem; font-size: .9rem; text-decoration: none; transition: border-color .15s, color .15s; }
+#negozio .nz-cpill { display: inline-block; border: 1px solid var(--nz-bordo); color: var(--nz-testo); border-radius: var(--nz-r); padding: .25rem .8rem; font-size: .9rem; text-decoration: none; transition: border-color .15s, color .15s; }
 #negozio .nz-cpill:hover { border-color: var(--nz-tema); color: var(--nz-tema); }
 #negozio .nz-cpill.on { background: var(--nz-tema); border-color: var(--nz-tema); color: #fff; }
 #negozio .nz-cnt { color: var(--nz-muto); font-size: .9rem; margin: 0 0 1rem; }
@@ -149,10 +149,10 @@
    Stesso markup in /negozio/ (_pages/negozio.md) e nelle pagine categoria (_plugins/ecommerce.rb, riga()): se cambi uno, cambia l'altro.
    Il JS del carrello legge .nz-box/.nz-prezzo/.nz-qta/.nz-add e i bottoni .nz-stp (+/-): non cambiare quelle classi. */
 #negozio .nz-lista { gap: 1rem; }
-#negozio .nz-riga { display: grid; grid-template-columns: 11rem minmax(0, 1fr) 13.5rem; gap: 1.5rem; align-items: center; padding: 1rem; border-radius: 16px; transition: box-shadow .15s, border-color .15s; }
+#negozio .nz-riga { display: grid; grid-template-columns: 11rem minmax(0, 1fr) 13.5rem; gap: 1.5rem; align-items: center; padding: 1rem; border-radius: var(--nz-rl); transition: box-shadow .15s, border-color .15s; }
 #negozio .nz-riga:hover { border-color: color-mix(in srgb, var(--nz-tema) 45%, var(--nz-bordo)); box-shadow: 0 6px 22px rgba(0, 0, 0, .07); }
 #negozio .nz-riga[hidden] { display: none; }
-#negozio .nz-riga .nz-icona { width: 100%; height: auto; aspect-ratio: 1 / 1; flex: none; font-size: 3.6rem; border-radius: 12px; background: color-mix(in srgb, var(--nz-tema) 6%, var(--nz-sfondo)); }
+#negozio .nz-riga .nz-icona { width: 100%; height: auto; aspect-ratio: 1 / 1; flex: none; font-size: 3.6rem; border-radius: var(--nz-rl); background: color-mix(in srgb, var(--nz-tema) 6%, var(--nz-sfondo)); }
 #negozio .nz-riga .nz-testo h3 { margin: .1rem 0 .35rem; font-size: 1.25rem; line-height: 1.25; }
 #negozio .nz-riga .nz-prezzo { font-size: 1.35rem; line-height: 1.2; margin: 0 0 .5rem; }
 #negozio .nz-riga .nz-breve { margin: 0; color: var(--nz-muto); font-size: .98rem; line-height: 1.5; }
@@ -160,17 +160,17 @@
 #negozio .nz-riga .nz-ok { align-self: center; min-height: 1.2em; }
 
 /* Quantita' con + e -: pillola, stessa altezza del bottone (anche nella scheda prodotto) */
-#negozio .nz-step { display: inline-flex; align-items: center; justify-content: space-between; height: 3rem; border: 1.5px solid var(--nz-bordo); border-radius: 999px; background: transparent; transition: border-color .15s, box-shadow .15s; }
+#negozio .nz-step { display: inline-flex; align-items: center; justify-content: space-between; height: 3rem; border: 1.5px solid var(--nz-bordo); border-radius: var(--nz-r); background: transparent; transition: border-color .15s, box-shadow .15s; }
 #negozio .nz-step:hover { border-color: var(--nz-tema); }
 #negozio .nz-step:focus-within { border-color: var(--nz-tema); box-shadow: 0 0 0 3px color-mix(in srgb, var(--nz-tema) 20%, transparent); }
-#negozio .nz-step .nz-stp { flex: none; width: 2.7rem; height: 100%; padding: 0; border: 0; background: transparent; color: var(--nz-testo); font-size: 1.3rem; line-height: 1; border-radius: 999px; cursor: pointer; }
+#negozio .nz-step .nz-stp { flex: none; width: 2.7rem; height: 100%; padding: 0; border: 0; background: transparent; color: var(--nz-testo); font-size: 1.3rem; line-height: 1; border-radius: var(--nz-r); cursor: pointer; }
 #negozio .nz-step .nz-stp:hover { color: var(--nz-tema); }
 #negozio .nz-step .nz-stp:focus-visible { outline: none; color: var(--nz-tema); }
 #negozio .nz-step .nz-qta, #negozio .nz-step .nz-qta:hover, #negozio .nz-step .nz-qta:focus { flex: 1 1 auto; width: 2.6rem; min-width: 0; height: 100%; padding: 0; border: 0; border-radius: 0; box-shadow: none; outline: none; background: transparent; text-align: center; font-size: 1.05rem; color: var(--nz-testo); -moz-appearance: textfield; appearance: textfield; }
 #negozio .nz-step .nz-qta::-webkit-outer-spin-button, #negozio .nz-step .nz-qta::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
 /* Bottone "Aggiungi al carrello" della lista: identico a quello della scheda prodotto (solo contorno, si riempie al passaggio) */
-#negozio .nz-azioni .nz-add { width: 100%; height: 3rem; padding: 0 1rem; font-size: 1rem; font-weight: 500; letter-spacing: .01em; color: var(--nz-tema); background: transparent; border: 1.5px solid var(--nz-tema); border-radius: 999px; box-shadow: none; transition: background-color .15s, color .15s, box-shadow .15s; }
+#negozio .nz-azioni .nz-add { width: 100%; height: 3rem; padding: 0 1rem; font-size: 1rem; font-weight: 500; letter-spacing: .01em; color: var(--nz-tema); background: transparent; border: 1.5px solid var(--nz-tema); border-radius: var(--nz-r); box-shadow: none; transition: background-color .15s, color .15s, box-shadow .15s; }
 #negozio .nz-azioni .nz-add:hover { background: var(--nz-tema); color: #fff; }
 #negozio .nz-azioni .nz-add:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--nz-tema) 25%, transparent); }
 #negozio .nz-azioni .nz-add:active { transform: translateY(1px); }
@@ -199,7 +199,7 @@
 /* ===== Bottoni del carrello (/carrello/): ordine Svuota (rosso) - Continua lo shopping (arancio) - Procedi all'ordine (verde pieno).
    Svuota e Continua hanno il contorno colorato (si riempiono al passaggio), Procedi e' pieno: e' l'azione principale. Solo dentro #nz-carrello-pag. */
 #nz-carrello-pag .nz-az-carrello { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin-top: 1.25rem; }
-#nz-carrello-pag .nz-b { --c: var(--nz-tema); display: inline-flex; align-items: center; justify-content: center; height: 3rem; padding: 0 1.5rem; margin: 0; font-size: 1rem; font-weight: 500; letter-spacing: .01em; text-decoration: none; color: var(--c); background: transparent; border: 2px solid var(--c); border-radius: 999px; box-shadow: none; cursor: pointer; transition: background-color .15s, color .15s, box-shadow .15s; }
+#nz-carrello-pag .nz-b { --c: var(--nz-tema); display: inline-flex; align-items: center; justify-content: center; height: 3rem; padding: 0 1.5rem; margin: 0; font-size: 1rem; font-weight: 500; letter-spacing: .01em; text-decoration: none; color: var(--c); background: transparent; border: 2px solid var(--c); border-radius: var(--nz-r); box-shadow: none; cursor: pointer; transition: background-color .15s, color .15s, box-shadow .15s; }
 #nz-carrello-pag .nz-b:hover, #nz-carrello-pag .nz-b:focus-visible { background: var(--c); color: #fff; text-decoration: none; }
 #nz-carrello-pag .nz-b:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 30%, transparent); }
 #nz-carrello-pag .nz-b:active { transform: translateY(1px); }
@@ -215,8 +215,8 @@
 /* Prodotto nel carrello: miniatura + nome sono un unico link alla scheda prodotto */
 #nz-carrello-pag .nz-pr { display: inline-flex; align-items: center; gap: .75rem; color: inherit; text-decoration: none; }
 #nz-carrello-pag .nz-pr:hover .nz-pr-n, #nz-carrello-pag .nz-pr:focus-visible .nz-pr-n { text-decoration: underline; color: var(--nz-tema); }
-#nz-carrello-pag .nz-pr:focus-visible { outline: 2px solid color-mix(in srgb, var(--nz-tema) 50%, transparent); outline-offset: 3px; border-radius: 8px; }
-#nz-carrello-pag .nz-pr-i { flex: 0 0 3.2rem; width: 3.2rem; height: 3.2rem; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid var(--nz-bordo); border-radius: 10px; font-size: 1.5rem; background: color-mix(in srgb, var(--nz-tema) 6%, var(--nz-sfondo)); }
+#nz-carrello-pag .nz-pr:focus-visible { outline: 2px solid color-mix(in srgb, var(--nz-tema) 50%, transparent); outline-offset: 3px; border-radius: var(--nz-r); }
+#nz-carrello-pag .nz-pr-i { flex: 0 0 3.2rem; width: 3.2rem; height: 3.2rem; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid var(--nz-bordo); border-radius: var(--nz-r); font-size: 1.5rem; background: color-mix(in srgb, var(--nz-tema) 6%, var(--nz-sfondo)); }
 #nz-carrello-pag .nz-pr-i img { width: 100%; height: 100%; object-fit: cover; display: block; }
 /* Anteprima del carrello nel menu: il nome del prodotto e' un link alla scheda */
 .nz-prev li a { color: inherit; text-decoration: none; }
@@ -251,7 +251,7 @@
 #nz-ordine-pag .nz-f { margin: 0 0 1rem; }
 #nz-ordine-pag .nz-f label { display: block; margin: 0 0 .35rem; font-size: .85rem; font-weight: 500; }
 #nz-ordine-pag .nz-opz { font-weight: 400; color: var(--nz-muto); }
-#nz-ordine-pag .nz-f input, #nz-ordine-pag .nz-f select, #nz-ordine-pag .nz-f textarea { display: block; width: 100%; padding: 0 1rem; font-size: 1rem; color: var(--nz-testo); background: var(--nz-sfondo); border: 1.5px solid var(--nz-bordo); border-radius: 12px; box-shadow: none; transition: border-color .15s, box-shadow .15s; }
+#nz-ordine-pag .nz-f input, #nz-ordine-pag .nz-f select, #nz-ordine-pag .nz-f textarea { display: block; width: 100%; padding: 0 1rem; font-size: 1rem; color: var(--nz-testo); background: var(--nz-sfondo); border: 1.5px solid var(--nz-bordo); border-radius: var(--nz-rl); box-shadow: none; transition: border-color .15s, box-shadow .15s; }
 #nz-ordine-pag .nz-f input, #nz-ordine-pag .nz-f select { height: 3rem; }
 #nz-ordine-pag .nz-f textarea { padding: .75rem 1rem; resize: vertical; min-height: 4.5rem; }
 #nz-ordine-pag .nz-f input:hover, #nz-ordine-pag .nz-f select:hover, #nz-ordine-pag .nz-f textarea:hover { border-color: color-mix(in srgb, var(--nz-tema) 55%, var(--nz-bordo)); }
@@ -261,12 +261,12 @@
   #nz-ordine-pag .nz-f-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   #nz-ordine-pag .nz-f-row.nz-r3 { grid-template-columns: 8rem minmax(0, 1fr) 7rem; }
 }
-#nz-ordine-pag .nz-err { margin: 0 0 1rem; padding: .6rem .9rem; border-radius: 10px; color: var(--r); background: color-mix(in srgb, var(--r) 8%, var(--nz-sfondo)); font-size: .92rem; }
+#nz-ordine-pag .nz-err { margin: 0 0 1rem; padding: .6rem .9rem; border-radius: var(--nz-r); color: var(--r); background: color-mix(in srgb, var(--r) 8%, var(--nz-sfondo)); font-size: .92rem; }
 #nz-ordine-pag .nz-err:empty { display: none; }
 
 /* Metodi di pagamento */
 #nz-ordine-pag .nz-pay { border: 0; padding: 0; margin: 0 0 1.5rem; min-width: 0; }
-#nz-ordine-pag .nz-pay-o { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .1rem .85rem; align-items: center; margin: 0 0 .6rem; padding: .85rem 1rem; border: 1.5px solid var(--nz-bordo); border-radius: 12px; cursor: pointer; transition: border-color .15s, background-color .15s, box-shadow .15s; }
+#nz-ordine-pag .nz-pay-o { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .1rem .85rem; align-items: center; margin: 0 0 .6rem; padding: .85rem 1rem; border: 1.5px solid var(--nz-bordo); border-radius: var(--nz-rl); cursor: pointer; transition: border-color .15s, background-color .15s, box-shadow .15s; }
 #nz-ordine-pag .nz-pay-o:hover { border-color: color-mix(in srgb, var(--g) 55%, var(--nz-bordo)); }
 #nz-ordine-pag .nz-pay-o input { grid-row: 1 / 3; width: 1.15rem; height: 1.15rem; margin: 0; accent-color: var(--g); }
 #nz-ordine-pag .nz-pay-t { font-weight: 500; }
@@ -275,18 +275,18 @@
 #nz-ordine-pag .nz-pay-o:focus-within { outline: 2px solid color-mix(in srgb, var(--g) 45%, transparent); outline-offset: 2px; }
 
 /* Riepilogo dati (passo 3), esito, nota legale */
-#nz-ordine-pag .nz-recap { border: 1px solid var(--nz-bordo); border-radius: 12px; padding: .15rem 1rem; margin: 0 0 1.5rem; }
+#nz-ordine-pag .nz-recap { border: 1px solid var(--nz-bordo); border-radius: var(--nz-rl); padding: .15rem 1rem; margin: 0 0 1.5rem; }
 #nz-ordine-pag .nz-recap-r { display: flex; gap: 1rem; padding: .75rem 0; }
 #nz-ordine-pag .nz-recap-r + .nz-recap-r { border-top: 1px solid var(--nz-bordo); }
 #nz-ordine-pag .nz-recap-k { flex: 0 0 6.5rem; color: var(--nz-muto); font-size: .85rem; padding-top: .1rem; }
 #nz-ordine-pag .nz-recap-v { min-width: 0; overflow-wrap: anywhere; }
-#nz-ordine-pag .nz-esito { margin: 0 0 1rem; padding: .85rem 1rem; border: 1px solid var(--nz-bordo); border-radius: 12px; font-size: .95rem; }
+#nz-ordine-pag .nz-esito { margin: 0 0 1rem; padding: .85rem 1rem; border: 1px solid var(--nz-bordo); border-radius: var(--nz-rl); font-size: .95rem; }
 #nz-ordine-pag .nz-esito[hidden] { display: none; }
 #nz-ordine-pag .nz-esito-err { border-color: var(--r); color: var(--r); background: color-mix(in srgb, var(--r) 8%, var(--nz-sfondo)); }
 #nz-ordine-pag .nz-legale { margin: 0 0 .25rem; color: var(--nz-muto); font-size: .82rem; }
 
 /* Riepilogo ordine a lato */
-#nz-ordine-pag .nz-ord-sum { padding: 1.25rem; border: 1px solid var(--nz-bordo); border-radius: 16px; background: color-mix(in srgb, var(--nz-tema) 4%, var(--nz-sfondo)); }
+#nz-ordine-pag .nz-ord-sum { padding: 1.25rem; border: 1px solid var(--nz-bordo); border-radius: var(--nz-rl); background: color-mix(in srgb, var(--nz-tema) 4%, var(--nz-sfondo)); }
 #nz-ordine-pag .nz-sum-t { margin: 0 0 .5rem; font-size: 1.05rem; font-weight: 600; }
 #nz-ordine-pag .nz-sum-righe { list-style: none; margin: 0; padding: 0; }
 #nz-ordine-pag .nz-sum-righe li { display: flex; justify-content: space-between; gap: 1rem; padding: .65rem 0; border-bottom: 1px solid var(--nz-bordo); font-size: .95rem; }
@@ -301,7 +301,7 @@
 
 /* Bottoni (stessa forma di quelli del carrello): Continua/Paga verde pieno, Indietro neutro con contorno */
 #nz-ordine-pag .nz-az-ord { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: space-between; align-items: center; margin-top: 1.5rem; }
-#nz-ordine-pag .nz-b { display: inline-flex; align-items: center; justify-content: center; height: 3rem; padding: 0 1.75rem; margin: 0; font-size: 1rem; font-weight: 500; letter-spacing: .01em; text-decoration: none; border: 2px solid var(--nz-bordo); border-radius: 999px; background: transparent; color: var(--nz-testo); box-shadow: none; cursor: pointer; transition: background-color .15s, color .15s, border-color .15s, box-shadow .15s; }
+#nz-ordine-pag .nz-b { display: inline-flex; align-items: center; justify-content: center; height: 3rem; padding: 0 1.75rem; margin: 0; font-size: 1rem; font-weight: 500; letter-spacing: .01em; text-decoration: none; border: 2px solid var(--nz-bordo); border-radius: var(--nz-r); background: transparent; color: var(--nz-testo); box-shadow: none; cursor: pointer; transition: background-color .15s, color .15s, border-color .15s, box-shadow .15s; }
 #nz-ordine-pag .nz-b:hover { border-color: var(--nz-testo); text-decoration: none; }
 #nz-ordine-pag .nz-b-vai { background: var(--g); border-color: var(--g); color: #fff; }
 #nz-ordine-pag .nz-b-vai:hover, #nz-ordine-pag .nz-b-vai:focus-visible { background: var(--gh); border-color: var(--gh); color: #fff; }
@@ -315,7 +315,7 @@
 
 /* ===== COMPATIBILITA' TEMA MINIMAL MISTAKES =====
    Il negozio nasce su al-folio (Bootstrap: btn btn-primary, fw-bold, text-muted...). Qui ridefiniamo SOLO cio' che serve, solo dentro le pagine del negozio. */
-#negozio .btn, #nz-carrello-pag .btn, #nz-ordine-pag .btn, .nz-dialog .btn { display: inline-block; padding: .5rem 1rem; border-radius: 8px; border: 1px solid var(--nz-bordo); background: #fff; color: var(--nz-testo); font-size: .95rem; line-height: 1.3; cursor: pointer; text-decoration: none; margin: 0; }
+#negozio .btn, #nz-carrello-pag .btn, #nz-ordine-pag .btn, .nz-dialog .btn { display: inline-block; padding: .5rem 1rem; border-radius: var(--nz-r); border: 1px solid var(--nz-bordo); background: #fff; color: var(--nz-testo); font-size: .95rem; line-height: 1.3; cursor: pointer; text-decoration: none; margin: 0; }
 #negozio .btn-primary { background: var(--nz-tema); border-color: var(--nz-tema); color: #fff; }
 #negozio .btn-primary:hover { filter: brightness(1.12); color: #fff; }
 #negozio .btn-outline-secondary:hover { border-color: var(--nz-tema); color: var(--nz-tema); }
